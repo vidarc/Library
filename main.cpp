@@ -22,8 +22,16 @@
 * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS*
 * IN THE SOFTWARE.                                                            *
 ******************************************************************************/
-const double VERSION = 0.0;
+#include <iostream>
 
-int main(int argc, char *argv[]) {
+#include "Menu.h"
+
+#define VERSION "0.0.1"
+
+int main() {
+	Menu menu(VERSION);
+
+	menu.showMenu();
+
 	return 0;
 }
