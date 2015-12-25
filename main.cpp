@@ -24,14 +24,10 @@
 ******************************************************************************/
 #include <iostream>
 
-#include "Menu.h"
+#include "Library.h"
 
 #define VERSION "0.0.1"
 
 int main() {
-	Menu menu(VERSION);
-
-	menu.showMenu();
-
 	return 0;
 }
