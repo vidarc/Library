@@ -29,5 +29,7 @@
 #define VERSION "0.0.1"
 
 int main() {
+	Library library(VERSION);
+
 	return 0;
 }
