@@ -26,10 +26,12 @@
 
 #include "Library.h"
 
-#define VERSION "0.0.1"
+#define VERSION "0.1"
 
 int main() {
 	Library library(VERSION);
+
+	library.menu();
 
 	return 0;
 }

@@ -1,5 +1,6 @@
 #pragma once
 
+#include <iostream>
 #include <string>
 
 class Library {
@@ -10,4 +11,8 @@ public:
 	Library();
 	Library(std::string);
 	~Library();
+
+	// Menu stuff
+	void showMenu();
+	void menu();
 };
