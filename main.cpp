@@ -29,9 +29,16 @@
 #define VERSION "0.1"
 
 int main() {
+	// seed for random stuff later
+	srand(unsigned(time(NULL)));
+
+	// Create the library
 	Library library(VERSION);
 
 	library.menu();
+
+	// delete library, because why not
+	library.~Library();
 
 	return 0;
 }

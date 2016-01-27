@@ -42,7 +42,7 @@ void Library::menu() {
 
 		switch (choice) {
 		case 1: { // Add a Member
-
+			addMember();
 		} break;
 		case 2: { // Print out Member List
 
@@ -73,4 +73,46 @@ void Library::menu() {
 		} break;
 		}
 	} while (choice < 11);
+}
+
+void Library::addMember() {
+	int id;
+	bool exists = true;
+
+	// Generate random ID # between 100000 and 999999
+	// then check to see if it exists already
+	while (exists) {
+		id = rand() % 899999 + 100000;
+		if (!searchIDs(id)) {
+			exists = false;
+		}
+	}
+
+	Member newMember(id);
+	m_members.push_back(newMember);
+}
+
+bool Library::searchIDs(int id) {
+	int first = 0,
+		last = m_members.size() - 1,
+		mid;
+
+	while (first <= last) {
+		mid = (first + last) / 2;
+		if (m_members[mid].getID() == id) {
+			return true;
+		}
+		else if (m_members[mid].getID() > id) {
+			last = mid - 1;
+		}
+		else {
+			first = mid + 1;
+		}
+	}
+	
+	return false;
+}
+
+void Library::sortMembers() {
+
 }
