@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include <iomanip>
 #include <ctime>
 #include <string>
 #include <vector>
@@ -27,4 +28,5 @@ public:
 	void addMember();
 	bool searchIDs(int);
 	void sortMembers(int, int);
+	void printMembers();
 };

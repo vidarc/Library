@@ -45,7 +45,7 @@ void Library::menu() {
 			addMember();
 		} break;
 		case 2: { // Print out Member List
-
+			printMembers();
 		} break;
 		case 3: { // View Member Information
 
@@ -144,5 +144,23 @@ void Library::sortMembers(int left, int right) {
 	}
 	if (i < right) {
 		sortMembers(i, right);
+	}
+}
+
+void Library::printMembers() {
+	std::cout << std::left << std::setw(7) << "ID";
+	std::cout << std::left << std::setw(25) << "Name";
+	std::cout << std::left << std::setw(25) << "Address";
+	std::cout << std::left << std::setw(20) << "City";
+	std::cout << std::left << std::setw(6) << "State";
+	std::cout << std::left << "Zip Code" << std::endl;
+
+	for (int i = 0; i < m_members.size(); i++) {
+		std::cout << std::left << std::setw(7) << m_members[i].getID();
+		std::cout << std::left << std::setw(25) << m_members[i].getName();
+		std::cout << std::left << std::setw(25) << m_members[i].getAddress();
+		std::cout << std::left << std::setw(20) << m_members[i].getCity();
+		std::cout << std::left << std::setw(6) << m_members[i].getState();
+		std::cout << std::left << m_members[i].getZipcode() << std::endl;
 	}
 }

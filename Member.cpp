@@ -10,6 +10,7 @@ Member::Member() {
 // create a Member object with that
 Member::Member(int id) {
 	m_id = id;
+	std::cin.ignore();
 
 	// temp variables to take in the info
 	std::string name;
@@ -19,18 +20,18 @@ Member::Member(int id) {
 	int zipcode;
 
 	std::cout << "Enter the name of the member: ";
-	std::cin >> name;
+	std::getline(std::cin, name);
 	m_name = name;
 
 	std::cout << "Enter the address of the member: ";
-	std::cin >> address;
+	std::getline(std::cin, address);
 	m_address = address;
 
 	std::cout << "Enter the city: ";
-	std::cin >> city;
+	std::getline(std::cin, city);
 	m_city = city;
 
-	std::cout << "Enter the state: ";
+	std::cout << "Enter the state (2 letters): ";
 	std::cin >> state;
 	m_state = state;
 
