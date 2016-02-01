@@ -91,7 +91,7 @@ void Library::addMember() {
 	Member newMember(id);
 	m_members.push_back(newMember);
 	if (m_members.size() > 1) {
-		sortMembers(0, m_members.size());
+		sortMembers(0, m_members.size() - 1);
 	}
 }
 
