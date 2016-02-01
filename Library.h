@@ -26,5 +26,5 @@ public:
 	// Member stuff
 	void addMember();
 	bool searchIDs(int);
-	void sortMembers();
+	void sortMembers(int, int);
 };

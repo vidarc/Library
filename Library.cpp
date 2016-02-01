@@ -90,6 +90,9 @@ void Library::addMember() {
 
 	Member newMember(id);
 	m_members.push_back(newMember);
+	if (m_members.size() > 1) {
+		sortMembers(0, m_members.size());
+	}
 }
 
 bool Library::searchIDs(int id) {
@@ -98,7 +101,7 @@ bool Library::searchIDs(int id) {
 		mid;
 
 	while (first <= last) {
-		mid = (first + last) / 2;
+		mid = first + ((last - first) / 2);
 		if (m_members[mid].getID() == id) {
 			return true;
 		}
@@ -113,6 +116,33 @@ bool Library::searchIDs(int id) {
 	return false;
 }
 
-void Library::sortMembers() {
+void Library::sortMembers(int left, int right) {
+	// quicksort algorithm
+	int i = left,
+		j = right;
+	Member temp;
+	int pivot = m_members[(left + right) / 2].getID();
 
+	while (i <= j) {
+		while (m_members[i].getID() < pivot) {
+			i++;
+		}
+		while (m_members[j].getID() > pivot) {
+			j--;
+		}
+		if (i <= j) {
+			temp = m_members[i];
+			m_members[i] = m_members[j];
+			m_members[j] = temp;
+			i++;
+			j--;
+		}
+	}
+
+	if (left < j) {
+		sortMembers(left, j);
+	}
+	if (i < right) {
+		sortMembers(i, right);
+	}
 }
