@@ -48,7 +48,7 @@ void Library::menu() {
 			printMembers();
 		} break;
 		case 3: { // View Member Information
-
+			memberInfo();
 		} break;
 		case 4: { // Check out a Book
 
@@ -76,14 +76,16 @@ void Library::menu() {
 }
 
 void Library::addMember() {
-	int id;
+	int id,
+		pos;
 	bool exists = true;
 
 	// Generate random ID # between 100000 and 999999
 	// then check to see if it exists already
 	while (exists) {
 		id = rand() % 899999 + 100000;
-		if (!searchIDs(id)) {
+		pos = searchIDs(id);
+		if (pos == -1) {
 			exists = false;
 		}
 	}
@@ -95,7 +97,7 @@ void Library::addMember() {
 	}
 }
 
-bool Library::searchIDs(int id) {
+int Library::searchIDs(int id) {
 	int first = 0,
 		last = m_members.size() - 1,
 		mid;
@@ -103,7 +105,7 @@ bool Library::searchIDs(int id) {
 	while (first <= last) {
 		mid = first + ((last - first) / 2);
 		if (m_members[mid].getID() == id) {
-			return true;
+			return mid;
 		}
 		else if (m_members[mid].getID() > id) {
 			last = mid - 1;
@@ -113,7 +115,7 @@ bool Library::searchIDs(int id) {
 		}
 	}
 	
-	return false;
+	return -1;
 }
 
 void Library::sortMembers(int left, int right) {
@@ -163,4 +165,22 @@ void Library::printMembers() {
 		std::cout << std::left << std::setw(6) << m_members[i].getState();
 		std::cout << std::left << m_members[i].getZipcode() << std::endl;
 	}
+}
+
+void Library::memberInfo() {
+	int id,
+		pos;
+
+	std::cout << "Enter in the Member's ID: ";
+	std::cin >> id;
+
+	pos = searchIDs(id);
+	while (pos == -1) {
+		std::cout << "Member ID not found." << std::endl;
+		std::cout << "Please re-enter ID (-1 to quit): ";
+		std::cin >> id;
+		pos = searchIDs(id);
+	}
+
+	std::cout << m_members[pos].getName() << std::endl;
 }
