@@ -27,7 +27,7 @@ public:
 	// Member stuff
 	void addMember();
 	int searchIDs(int);
-	void sortMembers(int, int);
+	void sortMembers(int, std::size_t);
 	void printMembers();
 	void memberInfo();
 };

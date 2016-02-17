@@ -98,9 +98,9 @@ void Library::addMember() {
 }
 
 int Library::searchIDs(int id) {
-	int first = 0,
-		last = m_members.size() - 1,
-		mid;
+	std::size_t first = 0,
+				last = m_members.size() - 1,
+				mid;
 
 	while (first <= last) {
 		mid = first + ((last - first) / 2);
@@ -118,10 +118,10 @@ int Library::searchIDs(int id) {
 	return -1;
 }
 
-void Library::sortMembers(int left, int right) {
+void Library::sortMembers(int left, std::size_t right) {
 	// quicksort algorithm
-	int i = left,
-		j = right;
+	std::size_t i = left,
+				j = right;
 	Member temp;
 	int pivot = m_members[(left + right) / 2].getID();
 
@@ -157,7 +157,7 @@ void Library::printMembers() {
 	std::cout << std::left << std::setw(6) << "State";
 	std::cout << std::left << "Zip Code" << std::endl;
 
-	for (int i = 0; i < m_members.size(); i++) {
+	for (unsigned int i = 0; i < m_members.size(); i++) {
 		std::cout << std::left << std::setw(7) << m_members[i].getID();
 		std::cout << std::left << std::setw(25) << m_members[i].getName();
 		std::cout << std::left << std::setw(25) << m_members[i].getAddress();
