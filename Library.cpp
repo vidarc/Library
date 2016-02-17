@@ -76,8 +76,8 @@ void Library::menu() {
 }
 
 void Library::addMember() {
-	int id,
-		pos;
+	int id = 0,
+		pos = 0;
 	bool exists = true;
 
 	// Generate random ID # between 100000 and 999999
@@ -98,9 +98,9 @@ void Library::addMember() {
 }
 
 int Library::searchIDs(int id) {
-	std::size_t first = 0,
-				last = m_members.size() - 1,
-				mid;
+	int first = 0,
+        last = m_members.size() - 1,
+        mid;
 
 	while (first <= last) {
 		mid = first + ((last - first) / 2);
@@ -118,10 +118,10 @@ int Library::searchIDs(int id) {
 	return -1;
 }
 
-void Library::sortMembers(int left, std::size_t right) {
+void Library::sortMembers(int left, int right) {
 	// quicksort algorithm
-	std::size_t i = left,
-				j = right;
+	int i = left,
+        j = right;
 	Member temp;
 	int pivot = m_members[(left + right) / 2].getID();
 
